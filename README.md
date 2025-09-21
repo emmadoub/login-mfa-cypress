@@ -1,3 +1,93 @@
+# VODA.ai -- QA Engineer assignment solution
+
+## Overview
+
+This repository contains my solution for the VODA.ai QA Engineer Assignment.
+It includes both manual testing documentation and Cypress automation tests for the application’s login and MFA flow.
+
+## Project Structure
+
+qa-engineer-assignment/
+├── cypress/            *Cypress automation tests*
+├── src/                *Application under test*
+├── docs/               *Documentation & manual testing*
+│   └── QA_Assignment_TestCases_BugReport.xlsx
+├── README.md            *Assignment description (provided)*
+└── README_SOLUTION.md   *This file – my solution notes*
+
+## Running the Application
+
+1. **Clone the Repository:**
+   ```bash
+   git clone [repository_url]
+   ```
+2. **Install the dependencies**
+   ```bash
+   npm install
+   ```
+3. **Run the application**
+   ```bash
+   npx tsc
+   npm start
+   ```
+The application will run on http://localhost:3000.
+
+## Running the Automation Tests
+
+- ### To run Cypress tests:
+
+    - **Open Cypress Test Runner:**
+   ```bash
+   npx cypress open
+   ```
+
+    - **Run headless tests**
+   ```bash
+   npx cypress run
+   ```
+
+- ### Automation covers:
+
+  - Login (valid and invalid)
+
+  - MFA (valid/invalid codes)
+
+  - Cookies (session handling, flags)
+
+  - API access control
+
+
+## Manual Testing
+
+Manual testing is documented in the following file:
+
+docs/QA_Assignment_TestCases_BugReport.xlsx
+
+This Excel file includes:
+
+- Test scenarios for both manual and automation tests (Login, MFA, Cookies, API)
+
+- Results: Passed, Failed, Passed with Issues
+
+- Identified bugs with severity, steps to reproduce, expected and actual results
+
+
+## Bugs Identified
+
+
+Key findings during testing (full details in Excel):
+
+- **MFA page accessible without login (UI + API)**
+
+- **Session cookie missing security flags (Secure, SameSite)**
+
+- **Plain text error handling on login and MFA failures**
+
+- **Username with leading/trailing spaces not handled**
+
+- **MFA accepts non-numeric input**
+
+
 # VODA.ai -- QA Engineer assignment
 
 
