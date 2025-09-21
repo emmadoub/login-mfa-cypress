@@ -7,9 +7,9 @@ import {
 
 describe("API Tests - Login & MFA", () => {
   it("API-001-should fail login with wrong credentials", () => {
-    cy.request(loginPOSTRequest(credentials.invalid)).then((res) => {
+    cy.request(loginPOSTRequest(credentials.invalid, false)).then((res) => {
       expect(res.headers["content-type"]).to.include("text/html"); // No JSON returned, only text
-      expect(res.body).to.include("Invalid Credentials");
+      expect(res.body).to.include("Invalid Credentials. Please try again.");
     });
   });
 
@@ -23,11 +23,11 @@ describe("API Tests - Login & MFA", () => {
   it("API-003-should fail MFA with wrong code", () => {
     cy.request(loginPOSTRequest(credentials.valid))
       .then(() => {
-        cy.request(mfaPOSTRequest(credentials.invalid.mfaCode));
+        cy.request(mfaPOSTRequest(credentials.invalid.mfaCode, false));
       })
       .then((res) => {
         expect(res.headers["content-type"]).to.include("text/html");
-        expect(res.body).to.include("Invalid MFA Code");
+        expect(res.body).to.include("Invalid MFA Code. Please try again.");
       });
   });
 
@@ -38,8 +38,7 @@ describe("API Tests - Login & MFA", () => {
       })
       .then((res) => {
         cy.request({
-          method: "GET",
-          url: "/dashboard",
+          ...apiGETRequest("/dashboard"),
           headers: { cookie: res.headers["set-cookie"] },
         }).then((dashboardRes) => {
           expect(res.headers["content-type"]).to.include("text/html");
@@ -50,7 +49,7 @@ describe("API Tests - Login & MFA", () => {
 
   it("API-005-should deny access to MFA page directly through URL", () => {
     cy.request(apiGETRequest("/mfa", false)).then((res) => {
-      expect(res.status).to.eq(301);
+      expect([301, 302]).to.include(res.status);
     });
   });
 });

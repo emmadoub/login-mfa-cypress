@@ -1,8 +1,24 @@
 class LoginPage {
-  executeLogin(username: string, password: string) {
-    cy.get("input#username").type(username);
-    cy.get("input#password").type(password);
+  typeUsername(username?: string) {
+    if (username) {
+      cy.get("#username").type(username);
+    }
+  }
+
+  typePassword(password?: string) {
+    if (password) {
+      cy.get("#password").type(password);
+    }
+  }
+
+  submit() {
     cy.get('button[type="submit"]').click();
+  }
+
+  executeLogin(username?: string, password?: string) {
+    this.typeUsername(username);
+    this.typePassword(password);
+    this.submit();
   }
 }
 
