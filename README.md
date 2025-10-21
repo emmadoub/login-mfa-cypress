@@ -7,6 +7,7 @@ It includes both manual testing documentation and Cypress automation tests for t
 
 ## Project Structure
 
+```
 qa-engineer-assignment/
 ├── cypress/            *Cypress automation tests*
 ├── src/                *Application under test*
@@ -15,6 +16,7 @@ qa-engineer-assignment/
 ├── README.md            *Assignment description (provided)*
 └── README_SOLUTION.md   *This file – my solution notes*
 
+```
 ## Running the Application
 
 1. **Clone the Repository:**
