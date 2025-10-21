@@ -29,7 +29,7 @@ qa-engineer-assignment/
 
 Manual testing is documented in the following file:
 
-docs/QA_Assignment_TestCases_BugReport.xlsx
+docs/TestCases_BugReport.xlsx
 
 This Excel file includes:
 
