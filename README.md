@@ -5,7 +5,7 @@ This repository includes both manual testing documentation and Cypress automatio
 ## Project Structure
 
 ```
-qa-engineer-assignment/
+login-mfa-cypress/
 ├── cypress/            *Cypress automation tests*
 ├── docs/               *Documentation & manual testing*
 │   └── TestCases_BugReport.xlsx
